@@ -1,0 +1,32 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.4.0
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = Practica2.o vector.o $(RES)
+LINKOBJ  = Practica2.o vector.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+BIN      = Practica2.exe
+CXXFLAGS = $(CXXINCS)  -Wall -Wextra -g3
+CFLAGS   = $(INCS)  -Wall -Wextra -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Practica2.o: Practica2.cpp
+	$(CPP) -c Practica2.cpp -o Practica2.o $(CXXFLAGS)
+
+vector.o: vector.cpp
+	$(CPP) -c vector.cpp -o vector.o $(CXXFLAGS)

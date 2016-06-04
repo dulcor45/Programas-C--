@@ -1,0 +1,35 @@
+# Project: Practica4
+# Makefile created by Dev-C++ 5.4.0
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = p4.o Fundacion.o Persona.o $(RES)
+LINKOBJ  = p4.o Fundacion.o Persona.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+BIN      = Practica4.exe
+CXXFLAGS = $(CXXINCS)  -Wall -Wextra -g3
+CFLAGS   = $(INCS)  -Wall -Wextra -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+p4.o: p4.cpp
+	$(CPP) -c p4.cpp -o p4.o $(CXXFLAGS)
+
+Fundacion.o: Fundacion.cpp
+	$(CPP) -c Fundacion.cpp -o Fundacion.o $(CXXFLAGS)
+
+Persona.o: Persona.cpp
+	$(CPP) -c Persona.cpp -o Persona.o $(CXXFLAGS)
